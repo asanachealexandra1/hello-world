@@ -7,7 +7,7 @@ pipeline {
       }
     }
     stage('Parallel1') {
-         step "CLM1": {
+         steps { "CLM1": {
             sh 'echo \'CLM 1\''
           },
         stage('Parallel2') {
@@ -25,7 +25,7 @@ pipeline {
                         }
                      }
                                      
-         step "CLM2": {
+          "CLM2": {
              sh 'echo \'CLM 2\''
           },
             stage('Parallel2') {
@@ -44,6 +44,7 @@ pipeline {
                          }
            
           }
+    }
 
          
           
