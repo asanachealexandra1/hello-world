@@ -7,7 +7,7 @@ pipeline {
       }
     }
     stage('Parallel1') {
-          "CLM1": {
+         parallel "CLM1": {
             sh 'echo \'CLM 1\''
           },
         stage('Parallel2') {
