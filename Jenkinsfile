@@ -7,7 +7,6 @@ pipeline {
       }
     }
     stage('Parallel1') {
-      steps {
           "CLM1": {
             sh 'echo \'CLM 1\''
           },
@@ -45,7 +44,7 @@ pipeline {
                          }
            
           }
-    }
+
          
           
        
