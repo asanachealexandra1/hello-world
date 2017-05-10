@@ -22,31 +22,34 @@ pipeline {
                               sh 'echo \'Parallel 2\''
                               
                             },
-                            "Parallel 3": {
-                              sh 'echo \'Parallel 3\''
-                     
-                            }
-                          )
-                        }
+                              )
+        },
+                              
           "CLM2": {
-            sh 'echo \'CLM 2\''
+          sh 'echo \'CLM 2\''
           },
-        steps {
+        )
+           }
+         }
+          stage('Parallel2') {
+              steps {
                 parallel(
-                             "Parallel 1": {
-                               sh 'echo \'Parallel 1\''
-                          
-                              },
-                             "Parallel 2": {
-                               sh 'echo \'Parallel 2\''
-                                      
-                              }
-                            )
+                      "Parallel 1": {
+                        sh 'echo \'Parallel 1\''
+            
+                      },
+                      "Parallel 2": {
+                        sh 'echo \'Parallel 2\''
+                        
+                      },
+                      "Parallel 3": {
+                        sh 'echo \'Parallel 3\''
+                                 
                           }
                        )
-         }
-    }
-
+                    }
+                }
+       
 
     stage('Finish') {
       steps {
