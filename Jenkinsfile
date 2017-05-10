@@ -6,7 +6,7 @@ pipeline {
         sh 'echo \'Start\''
       }
     }
-    stage('Parallel') {
+    stage('Parallel1') {
       steps {
         parallel(
           "CLM1": {
@@ -29,12 +29,12 @@ pipeline {
                           }
                        )
                     }
-          },
+          }
 
           "CLM2": {
             sh 'echo \'CLM 2\''
           },
-          stage('Parallel') {
+          stage('Parallel2') {
               steps {
                  parallel(
                       "Parallel 4": {
