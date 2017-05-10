@@ -28,12 +28,7 @@ pipeline {
                           }
                        )
                     }
-                 
-        stage('Finish1') {
-          steps {
-            sh 'echo \'Finish 1\''
-          }
-        },
+
           "CLM2": {
             sh 'echo \'CLM 2\''
           },
@@ -50,11 +45,7 @@ pipeline {
                     )
                  
             }
-        stage('Finish2') {
-          steps {
-            sh 'echo \'Finish 2\''
-          }
-         }
+
         )
       }
     }
