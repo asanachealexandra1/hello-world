@@ -11,7 +11,7 @@ pipeline {
         parallel(
           "CLM1": {
             sh 'echo \'CLM 1\''
-          },
+          }
               steps {
                 parallel(
                       "Parallel 1": {
