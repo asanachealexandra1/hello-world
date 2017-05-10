@@ -12,7 +12,10 @@ pipeline {
           "CLM1": {
             sh 'echo \'CLM 1\''
           },
-          stage('Parallel') {
+        "CLM2": {
+          sh 'echo \'CLM 2\''
+        },
+          stage('Parallel2') {
               steps {
                 parallel(
                       "Parallel 1": {
@@ -30,33 +33,10 @@ pipeline {
                        )
                     }
           }
-        stage('Finish1') {
-                  steps {
-                    sh 'echo \'Finish 1\''
-                  }
-                }
-
-          "CLM2": {
-            sh 'echo \'CLM 2\''
-          },
-          stage('Parallel2') {
-              steps {
-                 parallel(
-                      "Parallel 4": {
-                        sh 'echo \'Parallel 4\''
-                        
-                       },
-                      "Parallel 5": {
-                        sh 'echo \'Parallel 5\''
-                                    
-                       }
-                    )
-               }
-            }
-
-        )
+          )
       }
     }
+
     stage('Finish') {
       steps {
         sh 'echo \'Finish\''
