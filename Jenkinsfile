@@ -27,12 +27,13 @@ pipeline {
                         }
                      }
                      )
+      }
                               
           "CLM2": {
           sh 'echo \'CLM 2\''
           },
         
-           }
+           
          }
           
        
