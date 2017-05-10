@@ -12,9 +12,9 @@ pipeline {
           "CLM1": {
             sh 'echo \'CLM 1\''
           },
-        "CLM2": {
+          "CLM2": {
           sh 'echo \'CLM 2\''
-        },
+          },
           stage('Parallel2') {
               steps {
                 parallel(
@@ -32,7 +32,7 @@ pipeline {
                           }
                        )
                     }
-          }
+                }
           )
       }
     }
