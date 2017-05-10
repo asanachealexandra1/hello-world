@@ -33,7 +33,7 @@ pipeline {
           steps {
             sh 'echo \'Finish 1\''
           }
-        }
+        },
           "CLM2": {
             sh 'echo \'CLM 2\''
           },
