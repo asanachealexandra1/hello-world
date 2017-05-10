@@ -22,19 +22,37 @@ pipeline {
                             "Parallel 2": {
                               sh 'echo \'Parallel 2\''
                               
-                            },
+                            }
                           )
                         }
                      }
                      )
       }
-                              
+    }
+    stage('Parallel1') {
+          steps {
+            parallel(                   
           "CLM2": {
           sh 'echo \'CLM 2\''
           },
-        
-           
-         }
+            stage('Parallel2') {
+              steps {
+                   parallel(
+                                "Parallel 1": {
+                                  sh 'echo \'Parallel 1\''
+                      
+                                },
+                                "Parallel 2": {
+                                  sh 'echo \'Parallel 2\''
+                                  
+                                }
+                              )
+                            }
+                         }
+           )
+          }
+    }
+         
           
        
 
@@ -44,4 +62,4 @@ pipeline {
       }
     }
   }
-} 
+}
