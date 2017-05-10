@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Start)') {
+    stage('Start') {
       steps {
         sh 'echo \'Start\''
       }
@@ -9,73 +9,61 @@ pipeline {
     stage('Parallel') {
       steps {
         parallel(
-          "CLM 1": {
-            stages {
-              stage('Stage 11 S') {
-                steps {
-                  sh 'echo \'I am the FIRST single THREAD of Step 1 of CLM 1\''
-                }
-              }
-              stage('Stage 12 P') {
-                steps {
-                  parallel(
-                    "Echo121P": {
-                      sh 'echo \'I am the FIRST parallel THREAD of Step 2 of CLM 1\''
-
-                    },
-                    "Echo122P": {
-                      sh 'echo \'I am the SECOND parallel THREAD of Step 2 of CLM 1\''
-
-                    },
-                    "Echo123P": {
-                      sh 'echo \'I am the THIRD parallel THREAD of Step 2 of CLM 1\''
-
-                    }
-                  )
-                }
-              }
-              stage('Stage 13 S') {
-                steps {
-                  sh 'echo \'I am the FIRST single THREAD of Step 3 of CLM 1\''
-                }
-              }
-            }
-          },
-          "CLM 2": {
-            stages {
-              stage('Stage 21 S') {
-                steps {
-                  sh 'echo \'I am the FIRST single THREAD of Step 1 of CLM 2\''
-                }
-              }
-              stage('Stage 22 P') {
-                steps {
-                  parallel(
-                    "Echo221P": {
-                      sh 'echo \'I am the FIRST parallel THREAD of Step 2 of CLM 2\''
-
-                    },
-                    "Echo222P": {
-                      sh 'echo \'I am the SECOND parallel THREAD of Step 2 of CLM 2\''
-
-                    }
-                  )
-                }
-              }
-              stage('Stage 23 S') {
-                steps {
-                  sh 'echo \'I am the FIRST single THREAD of Step 3 of CLM 2\''
-                }
-              }
-            }
+          "CLM1": {
+            sh 'echo \'CLM 1\''
           }
+          stage('Parallel') {
+              steps {
+                parallel(
+                      "Parallel 1": {
+                        sh 'echo \'Parallel 1\''
+            
+                      },
+                      "Parallel 2": {
+                        sh 'echo \'Parallel 2\''
+                        
+                      },
+                      "Parallel 3": {
+                        sh 'echo \'Parallel 3\''
+                                 
+                          }
+                       )
+                    }
+                 }
+        stage('Finish1') {
+          steps {
+            sh 'echo \'Finish 1\''
+          }
+        }
+          "CLM2": {
+            sh 'echo \'CLM 2\''
+          }
+            stage('Parallel') {
+              steps {
+                 parallel(
+                      "Parallel 4": {
+                        sh 'echo \'Parallel 4\''
+                        
+                       },
+                      "Parallel 5": {
+                        sh 'echo \'Parallel 5\''
+                                    
+                       }
+                    )
+                 }
+            }
+        stage('Finish2') {
+          steps {
+            sh 'echo \'Finish 2\''
+          }
+         }
         )
       }
     }
-    stage('Finish)') {
+    stage('Finish') {
       steps {
-        sh 'echo \'Stop\''
+        sh 'echo \'Finish\''
       }
     }
   }
-}
+} 
