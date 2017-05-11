@@ -2,7 +2,7 @@
 parallel (
     "CLM1" : {
             stage('Build') {
-                println 'Build embedded solution1'
+                sleep 10s
             }
             stage('Test') {
               println 'Build embedded solution2'
