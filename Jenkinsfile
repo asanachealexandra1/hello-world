@@ -1,11 +1,4 @@
-pipeline {
-  agent any
-  stages {
-    stage('Start') {
-      steps {
-        sh 'echo \'Start\''
-      }
-    }
+
 parallel (
     "CLM1" : {
             stage('Build') {
@@ -31,5 +24,3 @@ parallel (
         }
     }
 )
-  }
-}
