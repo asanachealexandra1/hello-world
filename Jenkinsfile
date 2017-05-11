@@ -28,7 +28,7 @@ pipeline {
                         },
               "CLM2": {
                 sh 'echo \'CLM 2\''
-              }
+              },
                 stage('Parallel2') {
                      parallel(
                           "Parallel 4": {
