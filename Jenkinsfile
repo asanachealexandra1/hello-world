@@ -1,59 +1,12 @@
-pipeline {
-  agent any
-  stages {
-    stage('Start') {
-      steps {
-        sh 'echo \'Start\''
-      }
+parallel (
+    {
+        build("job1A")
+        build("job1B")
+        build("job1C")
+    },
+    {
+        build("job2A")
+        build("job2B")
+        build("job2C")
     }
-    stage('Parallel1') {
-         steps { "CLM1": {
-            sh 'echo \'CLM 1\''
-          },
-        stage('Parallel2') {
-          steps {
-               parallel(
-                            "Parallel 1": {
-                              sh 'echo \'Parallel 1\''
-                  
-                            },
-                            "Parallel 2": {
-                              sh 'echo \'Parallel 2\''
-                              
-                            }
-                          )
-                        }
-                     }
-                                     
-          "CLM2": {
-             sh 'echo \'CLM 2\''
-          },
-            stage('Parallel2') {
-              steps {
-                   parallel(
-                                "Parallel 1": {
-                                  sh 'echo \'Parallel 1\''
-                      
-                                },
-                                "Parallel 2": {
-                                  sh 'echo \'Parallel 2\''
-                                  
-                                }
-                              )
-                            }
-                         }
-           
-          }
-    }
-
-         
-          
-       
-
-    stage('Finish') {
-      steps {
-        sh 'echo \'Finish\''
-      }
-    }
-  }
-} 
+)
