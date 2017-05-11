@@ -5,7 +5,7 @@ parallel (
                 sleep 10
             }
             stage('Test') {
-              println 'Build embedded solution2'
+              sleep 20
             }
     },
     "CLM2" : {
@@ -15,7 +15,7 @@ parallel (
         stage('Test') {
             parallel (
                 "test-lowend" : {
-                  println 'Build embedded solution4'
+                  sleep 10
                 }, 
                 "test-highend" : {
                   sleep 15
