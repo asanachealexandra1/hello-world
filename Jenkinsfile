@@ -1,38 +1,35 @@
-node('A') {
-    stage('Setup') {
-        println 'Preparing multiple builds'
+pipeline {
+  agent any
+  stages {
+    stage('Start') {
+      steps {
+        sh 'echo \'Start\''
+      }
     }
-}
 parallel (
-    "web" : {
-        node('B') {
+    "CLM1" : {
             stage('Build') {
-                println 'Build web application'
+                sh 'echo \'Parallel 1\''
             }
             stage('Test') {
-                println 'Selenium Tests'
+                sh 'echo \'Parallel 2\''
             }
-        }
     },
-    "embedded" : {
-        node('C') {
+    "CLM2" : {
             stage('Build') {
                 println 'Build embedded solution'
             }
-        }
         stage('Test') {
             parallel (
                 "test-lowend" : {
-                    node('D1') {
-                        println 'Test lowend embedded'
-                    }
+                        sh 'echo \'Parallel 4\''
                 }, 
                 "test-highend" : {
-                    node('D2') {
-                        println 'Build highend embedded'
-                    }
+                        sh 'echo \'Parallel 5\''
                 }
             )
         }
     }
 )
+  }
+}
