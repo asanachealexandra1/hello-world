@@ -2,27 +2,27 @@
 parallel (
     "CLM1" : {
             stage('Build') {
-              date  
+              time  
               sleep 10
             }
             stage('Test') {
-              date
+              time
               sleep 20
             }
     },
     "CLM2" : {
             stage('Build') {
-              date  
+              time  
               println 'Build embedded solution'
             }
         stage('Test') {
             parallel (
                 "test-lowend" : {
-                  date
+                  time
                   sleep 10
                 }, 
                 "test-highend" : {
-                  date
+                  time
                   sleep 15
                 }
             )
