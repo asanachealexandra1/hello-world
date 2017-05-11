@@ -2,7 +2,7 @@
 parallel (
     "CLM1" : {
             stage('Build') {
-                sleep 10s
+                sleep 10
             }
             stage('Test') {
               println 'Build embedded solution2'
@@ -18,7 +18,7 @@ parallel (
                   println 'Build embedded solution4'
                 }, 
                 "test-highend" : {
-                  println 'Build embedded solution5'
+                  sleep 15
                 }
             )
         }
