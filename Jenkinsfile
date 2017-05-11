@@ -2,10 +2,10 @@
 parallel (
     "CLM1" : {
             stage('Build') {
-                sh 'echo \'Parallel 1\''
+                println 'Build embedded solution1'
             }
             stage('Test') {
-                sh 'echo \'Parallel 2\''
+              println 'Build embedded solution2'
             }
     },
     "CLM2" : {
@@ -15,10 +15,10 @@ parallel (
         stage('Test') {
             parallel (
                 "test-lowend" : {
-                        sh 'echo \'Parallel 4\''
+                  println 'Build embedded solution4'
                 }, 
                 "test-highend" : {
-                        sh 'echo \'Parallel 5\''
+                  println 'Build embedded solution5'
                 }
             )
         }
